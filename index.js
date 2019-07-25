@@ -3,14 +3,17 @@
 let Letter = require("./Letter");
 let inquirer = require("inquirer");
 
-inquirer.prompt([
-    {
-    name: "guessedCharacter",
-    message: "Guess a Letter"
-    }
-]).then(function(answers){
-    let newLetter = new Letter(answers.guessedCharacter);
-    newLetter.guessed();
-})
-
-
+let askUser = function () {
+    inquirer.prompt([
+        {
+            name: "guessedCharacter",
+            message: "Guess a Letter"
+        }
+    ]).then(function (answers) {
+        let newLetter = new Letter(answers.guessedCharacter);
+        newLetter.guessed();
+        console.log(turns);
+        askUser();
+    })
+}
+askUser();
