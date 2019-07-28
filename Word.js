@@ -1,31 +1,27 @@
-let Letter = require("./Letter");
+var Letter = require("./Letter");
 
-let Word = function(word){
-    
-    this.createWord = function (word){
-        let guessedLetters = [];
-        for(let i =0;i<word.length;i++){
-            let currentLetter = new Letter(word[i]);
-            guessedLetters.push(currentLetter);
-        }
-        return guessedLetters;
-    }
-
-    this.letters = this.createWord;
-
-    this.checkGuess = function(guess){
-        for(let i =0; i< this.letters.length;i++){
-            this.letters[i].letterGuess(guess);
-        }
-    }
-
-    this.display = function(){
-        let guessedLetters = "";
-        for(let i =0; i<this.letters.length;i++){
-            guessedLetters +=this.letters[i].display();
-        }
-        return guessedLetters;
-    }
+var Word = function(myWord) {
+	//chosen word from word list.
+	this.myWord = myWord;
+	//array of letters representing the letters of the random chosen word.
+	this.letters = [];
+	//failing to produce but will fix
+	this.underscores = [];
+	//
+	this.splitWord = function() {
+		this.letters = this.myWord.split("");
+		numberUnderscoresNeeded = this.letters.length;
+		console.log(this.underscores.join(" "));
+		console.log(numberUnderscoresNeeded);
+	}
+	this.generateLetters = function() {
+		for (i=0; i < this.letters.length; i++){
+			this.letters[i] = new Letter (this.letters[i]);
+			this.letters[i].showCharacter();
+		}
+	}
 }
 
+
+//Export the Word constructor so that we can use/reference it in index.js.
 module.exports = Word;
