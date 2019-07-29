@@ -12,7 +12,6 @@ var Word = function(myWord) {
 		this.letters = this.myWord.split("");
 		numberUnderscoresNeeded = this.letters.length;
 		console.log(this.underscores.join(" "));
-		console.log(numberUnderscoresNeeded);
 	}
 	this.generateLetters = function() {
 		for (i=0; i < this.letters.length; i++){

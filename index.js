@@ -11,7 +11,11 @@ const isLetter = require('is-letter');
 let userGuessedCorrectly = false;
 
 //word bank 
-let wordList = ["jazz","warriors"];
+let wordList = ["jazz","warriors","lakers","raptors","celtics","rockets","spurs","heat","sixers","clippers","knicks","thunder",
+"bulls","bucks","cavaliers","blazers","nets","mavericks","pelicans","jazz","pistons",
+"nuggets","suns","timberwolves","kings","hornets","pacers","wizards","hawks","magic",
+"grizzlies","sparks","aces","storm","mystics","liberty","lynx","mercury","sky",
+"dream","fever","sun","wings","comets","monarchs","sting","rockers","miracle","sol","fire"];
 
 //Choose random word from wordList where randomWord will be word chosen and someWord will be the 'new' word added into constructor
 let randomWord;
@@ -54,7 +58,7 @@ randomWord = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase()
 //Set the random word chosen from the word list to someWord
 someWord = new Word (randomWord);
 //Tell the user how many letters are in the word
-console.log(("Your word contains " + randomWord.length + " letters."));
+console.log(("The category is WNBA and NBA basketball teams.\nYour word contains " + randomWord.length + " letters."));
 //Use the Word constructor in Word.js to split the word and generate letters
 someWord.splitWord();
 someWord.generateLetters();
@@ -94,7 +98,7 @@ function guessLetter(){
 	if (lettersAlreadyGuessedListArray.indexOf(guess.letter.toUpperCase()) > -1) {
 		//If user already guessed a letter, run inquirer again to prompt them to enter a different letter
 		console.log(("\nYou already guessed that letter. Enter another one.\n"));
-		console.log(("\n=====================================================================\n"));
+		console.log(("\n-------------------------------------------------------------------\n"));
 		guessLetter();
 	}
 
@@ -103,9 +107,7 @@ function guessLetter(){
 		//Add letter to list of already guessed letters.
 		lettersAlreadyGuessedList = lettersAlreadyGuessedList.concat(" " + guess.letter.toUpperCase());
 		lettersAlreadyGuessedListArray.push(guess.letter.toUpperCase());
-		//Show letters already guessed to user.
-		console.log((('\nLetters already guessed: ') + lettersAlreadyGuessedList)+ "\n");
-
+		
 		//We need to loop through all of the letters in the word, 
 		//and determine if the letter that the user guessed matches one of the letters in the word.
 		for (i=0; i < someWord.letters.length; i++) {
@@ -118,26 +120,30 @@ function guessLetter(){
 				someWord.underscores[i] = guess.letter.toUpperCase();
 				//Increment the number of slots/underscores filled in with letters by 1.
 				slotsFilledIn++
-			}
+            }
+            
 		}
 		console.log(("\nWORD TO GUESS:"));
 		someWord.splitWord();
 		someWord.generateLetters();
 
+        //Show letters already guessed to user.
+        console.log((('\nLetters already guessed: ') + lettersAlreadyGuessedList)+ "\n");
+        
 		//guessed correctly
 		if (userGuessedCorrectly) {
 			console.log(('\nCORRECT!'));
-			console.log(("\n   =====================================================================   \n"));
+			console.log(("\n-------------------------------------------------------------------\n"));
 			//After each letter guess, check if the user won or lost.
 			checkIfUserWon();
 		}
 
 		//guessed incorrectly
 		else {
-			console.log(('\nINCORRECT!\n'));
+			console.log(('\nINCORRECT!'));
 			guessesRemaining--;
 			console.log(("\nYou have " + guessesRemaining + " guesses left.\n"));
-			console.log(("\n   =====================================================================   \n"));
+			console.log(("\n-------------------------------------------------------------------\n"));
 			checkIfUserWon();
 		}
 	}

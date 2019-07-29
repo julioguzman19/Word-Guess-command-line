@@ -7,7 +7,7 @@ var Letter = function(character) {
 	//or a placeholder (like an underscore) if the letter has not been guessed
 	this.showCharacter = function() {
 		if (this.letterGuessedCorrectly) {
-			console.log(this.character.charAt);
+			console.log(this.character);
 		}
 		else {
 			
