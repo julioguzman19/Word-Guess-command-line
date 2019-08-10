@@ -28,8 +28,14 @@
 ## Instruction on how to run:
 *$ node index.js* 
 
-## Demo
+## Demo Video via Google Drive: 
 https://drive.google.com/file/d/1d0cCN-YadtARViiXHCGkGFeabHIJoQhj/view 
+
+## Demo Video via GitHub: 
+https://github.com/julioguzman19/Word-Guess-command-line/blob/master/App%20Demo%20Word%20Guess.mp4
+
+## Demo Images:
+<!-- ![alt text](https://github.com/julioguzman19/liri-node-app/blob/master/Images/liri-node%201.PNG) -->
 
 ## Built With:
 - Javascript
